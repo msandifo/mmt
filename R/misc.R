@@ -108,6 +108,17 @@ map_raster <- function (hillshade, rotate = 0, ras=NA, plot=F, ...)
 
 #/Volumes/edata/aac46307-fce8-449d-e044-00144fdd4fa6/aac46307-fce8-449d-e044-00144fdd4fa6/w001000.tif
 
+#' Title
+#'
+#' @param clip
+#' @param input.file
+#' @param output.file
+#' @param fact
+#'
+#' @return
+#' @export
+#'
+#' @examples
 get_srtm1<- function(clip=c(141.2, 142.6, -36.2, -35),
                      input.file="/Volumes/edata/aac46307-fce8-449d-e044-00144fdd4fa6/aac46307-fce8-449d-e044-00144fdd4fa6/w001000.tif",
                      output.file= tempfile(), #"/tmp/srtm1_clip.tif",
@@ -146,6 +157,17 @@ get_srtm1<- function(clip=c(141.2, 142.6, -36.2, -35),
 }
 
 
+#' Title
+#'
+#' @param clip.region
+#' @param input.file
+#' @param output.file
+#' @param fact
+#'
+#' @return
+#' @export
+#'
+#' @examples
 get_srtm3<- function(clip.region=c(136., 146, -30, -22),
                      input.file="/Volumes/data/data/regional/australia/srtm3/oz_srtm",
                      output.file= "/tmp/srtm_clip.tif",

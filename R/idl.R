@@ -1,8 +1,73 @@
+#' Title
+#'
+#' @param dir
+#' @param fname
+#' @param sep
+#'
+#' @return
+#' @export
+#'
+#' @examples
 `%/%` <- function(dir, fname,sep="/") {paste(dir, fname, sep=sep)}
+
+#' Title
+#'
+#' @param dir
+#' @param fname
+#' @param sep
+#'
+#' @return
+#' @export
+#'
+#' @examples
 `% %` <- function(dir, fname,sep=" ") {paste(dir, fname, sep=sep)}
+
+#' Title
+#'
+#' @param dir
+#' @param fname
+#' @param sep
+#'
+#' @return
+#' @export
+#'
+#' @examples
 `%s%` <-  function(dir, fname,sep=" ") {paste(dir, fname, sep=sep)}
+
+#' Title
+#'
+#' @param dir
+#' @param fname
+#' @param sep
+#'
+#' @return
+#' @export
+#'
+#' @examples
 `%,%` <-  function(dir, fname,sep=",") {paste(dir, fname, sep=sep)}
+
+#' Title
+#'
+#' @param dir
+#' @param fname
+#' @param sep
+#'
+#' @return
+#' @export
+#'
+#' @examples
 `%;%` <-  function(dir, fname,sep=";") {paste(dir, fname, sep=sep)}
+
+#' Title
+#'
+#' @param dir
+#' @param fname
+#' @param sep
+#'
+#' @return
+#' @export
+#'
+#' @examples
 `%%` <-  function(dir, fname,sep="") {paste(dir, fname, sep=sep)}
 
 #' Title
@@ -24,9 +89,12 @@ get_idl_string<- function(plot.region =  c(140.6, 143.9, -36.5, -33.9),
 
   fir<- system.file("idl",   package="mmt")
 
+  #";   /Applications/harris/envi54/idl86/bin/idl -e 'idlshade,  lims=[" ,
+  #";   /Applications/harris/idl/bin/idl -e 'idlshade,  lims=[" ,
+
   paste0( "source ~/.bashrc; pushd ", fir ,
-     ";   /Applications/harris/envi54/idl86/bin/idl -e 'idlshade,  lims=[" ,
-    plot.region[3] %,%
+          ";   /Applications/harris/envi54/idl86/bin/idl -e 'idlshade,  lims=[" ,
+        plot.region[3] %,%
     plot.region[1] %,%
     plot.region[4] %,%
     plot.region[2] , "], v=" ,v , ", ct= " , ct, ", re=" , re , ", sea_level=-15 '; popd")
@@ -49,16 +117,23 @@ get_idl_string<- function(plot.region =  c(140.6, 143.9, -36.5, -33.9),
 make_idl<- function(plot.region =  c(140.6, 143.9, -36.5, -33.9),
                     v=10,
                     re=2,
-                    ct = -1
+                    ct = -1,
+                    file=NULL,
+                    outdir=system.file("idl",   package="mmt") %% "/figures/"
 ){
 
 idl.string<-get_idl_string(plot.region =plot.region, v=v, ct=ct, re=re)
 print(idl.string)
   system2("/usr/local/bin/bash", args = c("-c", shQuote(idl.string)))
 
-  fir<- system.file("idl",   package="mmt") %% "/figures/idl.tiff"
+  fir<- outdir %% "idl.tiff"
    #raster::stack(fir)
   print(fir)
+  fir1 <- file
+  print(fir1)
+  if (!is.null(file)) {
+    file.copy(fir,  file)
+  fir= fir1}
   im<- raster::brick(fir, crs="+proj=longlat +datum=WGS84")
      raster::extent(im) <-raster::extent(plot.region)
   im

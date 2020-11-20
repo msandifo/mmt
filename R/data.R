@@ -2,7 +2,7 @@ library(magrittr)
 library(tidyverse)
 library(lubridate)
 
-read_gq <-function(file="~/Dropbox/msandifo/documents/programming/r/2017/quakes/data/GGcat Australia M2.5 plus-170406.xlsx",
+read_gq <-function(file="data/GGcat Australia M2.5 plus-170406.xlsx",
 ver=F){
 
 readxl::read_excel(file, sheet=2) %>%
