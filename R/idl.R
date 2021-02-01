@@ -93,7 +93,7 @@ get_idl_string<- function(plot.region =  c(140.6, 143.9, -36.5, -33.9),
   #";   /Applications/harris/idl/bin/idl -e 'idlshade,  lims=[" ,
 
   paste0( "source ~/.bashrc; pushd ", fir ,
-          ";   /Applications/harris/envi54/idl86/bin/idl -e 'idlshade,  lims=[" ,
+          ";   /Applications/harris/envi56/idl88/bin/idl -e 'idlshade,  lims=[" ,
         plot.region[3] %,%
     plot.region[1] %,%
     plot.region[4] %,%

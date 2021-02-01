@@ -57,7 +57,7 @@ s.box  <- bbox_poly(clip.region.s)
 s.box.laea <- s.box  %>% convertPts(to=eyre.laea)
 
 ### needs to be put into package
-source('/Volumes/data/Dropbox/msandifo/documents/programming/r/2019/gab/R/sf.R')
+source('~/Dropbox/msandifo/documents/programming/r/2019/gab/R/sf.R')
 ###
 read_AHGFNetworkStream()
 streams<- AHGFNetworkStream  %>%
@@ -265,5 +265,6 @@ raster::plot(dem1 %>% stretch_ras(c(0.2, .45)), #%>% stretch_ras(lims= stretch.l
              axis.args = list(cex.axis =2.3, mgp=c(1,2,0))
 )
 dev.off()
+ s
 
 
